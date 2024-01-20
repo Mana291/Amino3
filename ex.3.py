@@ -1,7 +1,7 @@
 import pyxel
 import random
 #落下時にx座標を8の倍数、だけど左側に寄せるから時々空白が生まれてしまう＝なるべくぴったりと落としてもらう
-class TetrisBlock:
+class TetrisBlock:#ブロックの状態や挙動を管理
     def __init__(self):
         self.x = 88 #落下時点
         self.y = 0
@@ -151,7 +151,7 @@ def draw():
         
     tetris_block.draw()
     pyxel.line(0, 24, pyxel.width, 24, 12)
-    pyxel.text(10, 5, f"Score: {score}", 1)
+    pyxel.text(10, 5, "Score: " + str(score), 1)
     if game_over:
         pyxel.text(80, 90, "GAME OVER", pyxel.frame_count % 16)
         pyxel.text(40, 120, "press space button to restart", pyxel.frame_count % 16)
