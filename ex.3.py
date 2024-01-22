@@ -42,6 +42,7 @@ class TetrisBlock:
                 and self.y < block[1] + self.size#テトロミノの上端がブロックの下端よりも上にある
             ):
                 self.y = block[1] - self.size * len(self.current_tetromino)
+                #block[1] は stopped_blocks リスト内の各ブロックの左上の y 座標
                 # 落下時にx座標を8の倍数にする
                 self.x = (self.x // 8) * 8
                 self.velocity_y = 0
@@ -108,9 +109,9 @@ def update():
 
 def draw():
     pyxel.cls(7)
-    for x in range(0, pyxel.width, 8):
+    for x in range(0, pyxel.width, 8):#縦線
         pyxel.line(x, 0, x, pyxel.height, 6)
-    for y in range(0, pyxel.height, 8):
+    for y in range(0, pyxel.height, 8):#横線
         pyxel.line(0, y, pyxel.width, y, 6)
     for block in blocks:
         pyxel.rect(block[0], block[1], tetris_block.size, tetris_block.size, tetris_block.block_colors.get(block[2], 0))
